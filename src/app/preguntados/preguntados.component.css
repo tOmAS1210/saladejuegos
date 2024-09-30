@@ -1,0 +1,95 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Para centrar verticalmente */
+  background-color: #b5cfd7; /* Fondo azul claro */
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  margin: 10px 0; /* Espacio entre botones */
+  font-size: 16px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #a6acaf; /* Efecto hover en el botón */
+}
+
+.button-logOut {
+  justify-content: center;
+}
+
+/* Estilo para organizar el header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+/* Alinear los botones a la izquierda con espacio entre ellos */
+.top-buttons {
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilos para los botones */
+.top-buttons button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-buttons button:hover {
+  background-color: #45a049;
+}
+
+/* Alinear el mensaje de usuario a la derecha */
+.usuario-logeado {
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.horizontal-buttons-container {
+  position: fixed; /* Fija la posición en la pantalla */
+  bottom: 20px; /* Los coloca a 20px desde el fondo */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(
+    -50%
+  ); /* Ajusta la posición para que el contenedor esté centrado */
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilos de los botones */
+.horizontal-buttons-container button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.horizontal-buttons-container button:hover {
+  background-color: #45a049;
+}
+
+.custom-h1 {
+  font-size: 30px; /* Cambia el tamaño del texto aquí */
+  font-weight: bold; /* Puedes ajustar el grosor del texto si lo necesitas */
+  color: #333; /* Cambia el color si es necesario */
+  text-align: center; /* Alinea el texto al centro */
+}

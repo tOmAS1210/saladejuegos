@@ -1,0 +1,22 @@
+<div class="register-wrapper">
+  <div class="container">
+    <h1>Registro de usuario</h1>
+
+    <p>Email</p>
+    <input [(ngModel)]="correo" type="email" placeholder="Email" />
+    <br />
+
+    <p>Contraseña</p>
+    <input [(ngModel)]="pass" type="password" placeholder="Password" />
+    <br />
+
+    <p>Nombre</p>
+    <input [(ngModel)]="nombre" type="nombre" placeholder="Nombre" />
+    <br />
+
+    <div class="buttons">
+      <button (click)="crearUsuario()">Registrar</button>
+      <button (click)="volverHome()">Volver</button>
+    </div>
+  </div>
+</div>

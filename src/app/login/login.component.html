@@ -1,0 +1,27 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <h1>Login</h1>
+
+    <p>Email</p>
+    <input [(ngModel)]="correo" type="email" placeholder="Email" />
+    <br />
+
+    <p>Contrasenia</p>
+    <input [(ngModel)]="pass" type="password" placeholder="password" />
+    <br />
+
+    <div class="buttons">
+      <button (click)="loguearUsuario()">Loguearse</button>
+      <button (click)="volverHome()">Volver</button>
+    </div>
+
+    <div id="autoCompletar-buttons">
+      <h1>Cuentas de prueba</h1>
+      <button (click)="autoCompletarAdmin()">Admin</button>
+      <br />
+      <button (click)="autoCompletarUser1()">user1</button>
+      <br />
+      <button (click)="autoCompletarUser2()">user2</button>
+    </div>
+  </div>
+</div>

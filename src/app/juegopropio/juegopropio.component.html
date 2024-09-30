@@ -1,0 +1,30 @@
+<header *ngIf="isLoggedIn()">
+  <div class="header-container">
+    <div class="top-buttons">
+      <button routerLink="/ahorcado">Ahorcado</button>
+      <button routerLink="/mayormenor">Mayor o Menor</button>
+      <button routerLink="/preguntados">Preguntados</button>
+      <button routerLink="/juegopropio">Juego propio</button>
+    </div>
+    <div class="usuario-logeado" *ngIf="user">
+      <p>Bienvenido, {{ user.name ? user.name : user.email }}!</p>
+    </div>
+  </div>
+</header>
+
+<div class="button-container">
+  <div *ngIf="!isLoggedIn()">
+    <button routerLink="/login">Login</button>
+    &nbsp;<br /><br />
+    <button routerLink="/registro">Register</button>
+  </div>
+  <br />
+
+  <div id="logOut" *ngIf="isLoggedIn()" class="horizontal-buttons-container">
+    <button routerLink="/quiensoy">Quien soy</button>
+    <br />
+    <button class="button-logOut" (click)="onClick()">Cerrar sesion</button>
+    <br />
+    <button (click)="moveToChat()">Chat</button>
+  </div>
+</div>

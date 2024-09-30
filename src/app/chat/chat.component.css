@@ -1,0 +1,84 @@
+.contenedor {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.cardContainer {
+  width: 300px;
+  height: 500px; /* Tamaño fijo */
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  background-color: #4141e6;
+  color: white;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  flex: 1; /* Deja que el cuerpo ocupe el espacio restante */
+  overflow-y: auto; /* Habilita el scroll en el cuerpo */
+  padding: 0.5rem;
+  background-image: url(https://wallpapers.com/images/high/whatsapp-chat-doodle-patterns-jyd5uvep2fdwjl97.webp);
+  background-size: cover;
+}
+
+.imgEnviar:active {
+  transform: scale(0.9);
+}
+
+.enviado {
+  display: block;
+  float: right;
+  background-color: rgb(0, 153, 255);
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.recibido {
+  display: block;
+  float: left;
+  background-color: gray;
+  color: black;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.contenedorDeMensajes {
+  height: 100%; /* Ocupa toda la altura disponible dentro del card-body */
+  overflow-y: scroll; /* Habilita el scroll solo en el área de mensajes */
+  padding: 0.3rem;
+}
+
+.contenedorDeMensajes::-webkit-scrollbar {
+  display: none;
+}
+
+.card-footer {
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
