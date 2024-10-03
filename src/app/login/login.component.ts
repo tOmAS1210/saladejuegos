@@ -31,13 +31,13 @@ export class LoginComponent {
           title: 'Good job!',
           text: 'Logueo exitoso',
           icon: 'success',
-          position: 'top', // Cambia la posición (top, center, bottom, etc.)
-          toast: true, // Lo hace aparecer como una notificación
+          position: 'top',
+          toast: true,
           showConfirmButton: false,
-          timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-          background: '#f8d7da', // Color de fondo para hacerlo más visible
+          timer: 3000,
+          background: '#f8d7da',
           customClass: {
-            popup: 'my-custom-popup', // Clase CSS personalizada
+            popup: 'my-custom-popup',
           },
         });
       })
@@ -54,14 +54,14 @@ export class LoginComponent {
         icon: 'error',
         title: 'Oops...',
         text: 'Verifique su correo o contrasenia',
-        position: 'top', // Cambia la posición (top, center, bottom, etc.)
-        toast: true, // Lo hace aparecer como una notificación
+        position: 'top',
+        toast: true,
         showConfirmButton: true,
-        ///timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-        background: '#f8d7da', // Color de fondo para hacerlo más visible
+        ///timer: 3000,
+        background: '#f8d7da',
         customClass: {
           popup: 'my-custom-popup',
-        }, // Clase CSS personalizada
+        },
       });
     }
   }
@@ -73,18 +73,15 @@ export class LoginComponent {
   autoCompletarAdmin() {
     this.correo = 'admin@gmail.com';
     this.pass = '123456';
-    //.nombre = 'Admin';
   }
 
   autoCompletarUser1() {
     this.correo = 'user1@gmail.com';
     this.pass = '123456';
-    //this.nombre = 'Usuario Comun';
   }
 
   autoCompletarUser2() {
     this.correo = 'user2@gmail.com';
     this.pass = '123456';
-    //this.nombre = 'Usuario Comun 2';
   }
 }

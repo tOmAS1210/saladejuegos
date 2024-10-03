@@ -13,6 +13,20 @@
 </header>
 
 <div class="button-container">
+  <div class="contenedor-cartas" *ngIf="isLoggedIn()">
+    <div class="puntaje-cartas">puntaje: {{ puntos }}</div>
+
+    <div class="carta">
+      <p class="num-centro">{{ numeroInicialRandom }}</p>
+      <p class="num-esquina esquina-arriba">{{ numeroInicialRandom }}</p>
+      <p class="num-esquina esquina-abajo">{{ numeroInicialRandom }}</p>
+    </div>
+  </div>
+  <div class="contenedor-boton-mayormenor" *ngIf="isLoggedIn()">
+    <h1>La siguiente carta en salir sera:</h1>
+    <button class="boton-mayor" (click)="botonMayor()">Mayor</button>
+    <button class="boton-menor" (click)="botonMenor()">Menor</button>
+  </div>
   <div *ngIf="!isLoggedIn()">
     <button routerLink="/login">Login</button>
     &nbsp;<br /><br />

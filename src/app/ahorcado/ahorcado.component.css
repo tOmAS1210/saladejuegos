@@ -3,14 +3,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Para centrar verticalmente */
-  background-color: #b5cfd7; /* Fondo azul claro */
+  height: 100vh;
+  background-color: #b5cfd7;
 }
 
 button {
   width: 200px;
   height: 50px;
-  margin: 10px 0; /* Espacio entre botones */
+  margin: 5px;
+  padding: 10px 15px;
   font-size: 16px;
   background-color: white;
   border: none;
@@ -19,14 +20,13 @@ button {
 }
 
 button:hover {
-  background-color: #a6acaf; /* Efecto hover en el botón */
+  background-color: #a6acaf;
 }
 
 .button-logOut {
   justify-content: center;
 }
 
-/* Estilo para organizar el header */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -35,13 +35,11 @@ button:hover {
   background-color: #f4f4f4;
 }
 
-/* Alinear los botones a la izquierda con espacio entre ellos */
 .top-buttons {
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
 }
 
-/* Estilos para los botones */
 .top-buttons button {
   padding: 10px 20px;
   background-color: #4caf50;
@@ -55,7 +53,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Alinear el mensaje de usuario a la derecha */
 .usuario-logeado {
   text-align: right;
   font-size: 16px;
@@ -63,17 +60,14 @@ button:hover {
 }
 
 .horizontal-buttons-container {
-  position: fixed; /* Fija la posición en la pantalla */
-  bottom: 20px; /* Los coloca a 20px desde el fondo */
-  left: 50%; /* Centra horizontalmente */
-  transform: translateX(
-    -50%
-  ); /* Ajusta la posición para que el contenedor esté centrado */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
 }
 
-/* Estilos de los botones */
 .horizontal-buttons-container button {
   padding: 10px 20px;
   background-color: #4caf50;
@@ -88,8 +82,58 @@ button:hover {
 }
 
 .custom-h1 {
-  font-size: 30px; /* Cambia el tamaño del texto aquí */
-  font-weight: bold; /* Puedes ajustar el grosor del texto si lo necesitas */
-  color: #333; /* Cambia el color si es necesario */
-  text-align: center; /* Alinea el texto al centro */
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.lineas {
+  font-size: 24px; /* Ajusta el tamaño según sea necesario */
+  letter-spacing: 4px; /* Espacio entre las líneas */
+  margin: 20px 0; /* Margen superior e inferior */
+}
+
+.juegoAhorcado {
+  text-align: center;
+  margin: 20px;
+}
+
+.boton {
+  font-size: 12px;
+  padding: 13px 19px;
+  margin: 3px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #45a049;
+}
+
+/* Cambiamos el color del botón cuando ya fue seleccionado */
+.seleccionado {
+  background-color: grey; /* Cambia el color del botón a gris */
+  cursor: not-allowed; /* Cambia el cursor a no permitido */
+  color: white; /* Mantén el texto en blanco */
+}
+
+.fila {
+  margin-bottom: 5px; /* Separación entre filas de botones */
+  display: flex; /* Para alinear los botones en una fila */
+  justify-content: center; /* Centrar los botones */
+}
+
+.letras {
+  text-align: center; /* Centra el contenedor de letras */
+}
+
+.seleccionado {
+  background-color: black; /* Cambia el color del botón a negro */
+  cursor: not-allowed; /* Cambia el cursor a no permitido */
+  color: white; /* Mantén el texto en blanco */
+  background-color: #333;
 }

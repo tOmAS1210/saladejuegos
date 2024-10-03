@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit {
     },
     {
       emisor: 'jixHZNpVgFVCJCg1jyKRRVHrGGj2',
-      msj: 'seguis vendiendo esos consoladores monster cock?',
+      msj: 'seguis vendiendo esos ?',
     },
     {
       emisor: 'id',
@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit {
     },
     {
       emisor: 'jixHZNpVgFVCJCg1jyKRRVHrGGj2',
-      msj: 'Los negros cometen el 58% de los crimenes con solo ser 18% de la poblacion. (hay que eliminarlos)',
+      msj: 'hola',
     },
   ];
 

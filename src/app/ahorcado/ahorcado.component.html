@@ -12,14 +12,213 @@
   </div>
 </header>
 
-<div class="juegoAhorcado">
-  <img
-    src="/saladejuegos/src/assets-ahorcado/el-ahorcado.png"
-    alt="ahorcado1"
-  />
-</div>
-
 <div class="button-container">
+  <div class="juegoAhorcado" *ngIf="isLoggedIn()">
+    <h2>Puntos: {{ puntos }}</h2>
+    <img src="/elahorcado.png" alt="ahorcado1" width="200" height="200" />
+    <div class="lineas">
+      {{ lineas }}
+    </div>
+    <div *ngIf="intentosRestantes > 0">
+      <h2>Intentos restantes: {{ intentosRestantes }}</h2>
+    </div>
+    <div *ngIf="intentosRestantes === 0">
+      <h2>¡Perdiste! La palabra era: {{ palabraElegida }}</h2>
+      <button (click)="reiniciarJuegoPerdido()">Reiniciar Juego</button>
+    </div>
+
+    <div class="letras">
+      <div class="fila">
+        <div
+          class="boton"
+          (click)="adivinarLetra('a')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('a') }"
+        >
+          A
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('b')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('b') }"
+        >
+          B
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('c')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('c') }"
+        >
+          C
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('d')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('d') }"
+        >
+          D
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('e')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('e') }"
+        >
+          E
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('f')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('f') }"
+        >
+          F
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('g')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('g') }"
+        >
+          G
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('h')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('h') }"
+        >
+          H
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('i')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('i') }"
+        >
+          I
+        </div>
+      </div>
+      <div class="fila">
+        <div
+          class="boton"
+          (click)="adivinarLetra('j')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('j') }"
+        >
+          J
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('k')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('k') }"
+        >
+          K
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('l')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('l') }"
+        >
+          L
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('m')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('m') }"
+        >
+          M
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('n')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('n') }"
+        >
+          N
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('o')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('o') }"
+        >
+          O
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('p')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('p') }"
+        >
+          P
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('q')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('q') }"
+        >
+          Q
+        </div>
+      </div>
+      <div class="fila">
+        <div
+          class="boton"
+          (click)="adivinarLetra('r')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('r') }"
+        >
+          R
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('s')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('s') }"
+        >
+          S
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('t')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('t') }"
+        >
+          T
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('u')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('u') }"
+        >
+          U
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('v')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('v') }"
+        >
+          V
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('w')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('w') }"
+        >
+          W
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('x')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('x') }"
+        >
+          X
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('y')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('y') }"
+        >
+          Y
+        </div>
+        <div
+          class="boton"
+          (click)="adivinarLetra('z')"
+          [ngClass]="{ seleccionado: letrasTocadas.includes('z') }"
+        >
+          Z
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div *ngIf="!isLoggedIn()">
     <button routerLink="/login">Login</button>
     &nbsp;<br /><br />

@@ -14,8 +14,13 @@ import Swal from 'sweetalert2';
 })
 export class MayormenorComponent {
   user: any;
+  numeroSiguienteRandom: number = 0;
+  numeroInicialRandom: number = 0;
+  puntos: number = 0;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+    this.proximaCarta();
+  }
 
   isLoggedIn() {
     return this.userService.getAuthStatus();
@@ -31,13 +36,13 @@ export class MayormenorComponent {
           title: 'Good job!',
           text: 'Deslogueo exitoso',
           icon: 'success',
-          position: 'top', // Cambia la posición (top, center, bottom, etc.)
-          toast: true, // Lo hace aparecer como una notificación
+          position: 'top',
+          toast: true,
           showConfirmButton: false,
-          timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-          background: '#f8d7da', // Color de fondo para hacerlo más visible
+          timer: 3000,
+          background: '#f8d7da',
           customClass: {
-            popup: 'my-custom-popup', // Clase CSS personalizada
+            popup: 'my-custom-popup',
           },
         });
       })
@@ -50,5 +55,71 @@ export class MayormenorComponent {
 
   moveToChat() {
     this.router.navigateByUrl('/chat');
+  }
+
+  cartasAlAzar() {
+    return Math.floor(Math.random() * 12) + 1;
+  }
+
+  botonMayor() {
+    this.numeroSiguienteRandom = this.cartasAlAzar();
+    console.log('Carta actual:', this.numeroSiguienteRandom);
+    console.log('Carta anterior:', this.numeroInicialRandom);
+
+    if (this.numeroSiguienteRandom > this.numeroInicialRandom) {
+      console.log(
+        'La carta que salio es mayor a esta: ',
+        this.numeroInicialRandom
+      );
+      this.puntos += 10;
+    } else if (this.numeroSiguienteRandom < this.numeroInicialRandom) {
+      Swal.fire(`lograste: ${this.puntos} puntos, intentelo de nuevo`);
+      this.puntos = 0;
+    } else {
+      Swal.fire({
+        icon: 'success',
+        text: 'Salio la misma carta, no ganas ni pierdes puntos',
+        position: 'top',
+        toast: true,
+        showConfirmButton: false,
+        timer: 1500,
+        customClass: {
+          popup: 'my-custom-popup',
+        },
+      });
+    }
+    this.numeroInicialRandom = this.numeroSiguienteRandom;
+  }
+
+  botonMenor() {
+    this.numeroSiguienteRandom = this.cartasAlAzar();
+    console.log('Carta actual:', this.numeroSiguienteRandom);
+    console.log('Carta anterior:', this.numeroInicialRandom);
+
+    if (this.numeroSiguienteRandom < this.numeroInicialRandom) {
+      console.log('La carta que salió es menor a la anterior.');
+      this.puntos += 10;
+    } else if (this.numeroSiguienteRandom > this.numeroInicialRandom) {
+      Swal.fire(`lograste: ${this.puntos} puntos, intentelo de nuevo`);
+      this.puntos = 0;
+    } else {
+      Swal.fire({
+        icon: 'success',
+        text: 'Salio la misma carta, no ganas ni pierdes puntos',
+        position: 'top',
+        toast: true,
+        showConfirmButton: false,
+        timer: 1500,
+        customClass: {
+          popup: 'my-custom-popup',
+        },
+      });
+    }
+
+    this.numeroInicialRandom = this.numeroSiguienteRandom;
+  }
+
+  proximaCarta() {
+    this.numeroInicialRandom = this.cartasAlAzar();
   }
 }

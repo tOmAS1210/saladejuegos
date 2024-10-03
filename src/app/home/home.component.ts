@@ -32,13 +32,13 @@ export class HomeComponent {
           title: 'Good job!',
           text: 'Deslogueo exitoso',
           icon: 'success',
-          position: 'top', // Cambia la posición (top, center, bottom, etc.)
-          toast: true, // Lo hace aparecer como una notificación
+          position: 'top',
+          toast: true,
           showConfirmButton: false,
-          timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-          background: '#f8d7da', // Color de fondo para hacerlo más visible
+          timer: 3000,
+          background: '#f8d7da',
           customClass: {
-            popup: 'my-custom-popup', // Clase CSS personalizada
+            popup: 'my-custom-popup',
           },
         });
       })

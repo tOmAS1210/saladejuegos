@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Para centrar verticalmente */
-  background-color: #b5cfd7; /* Fondo azul claro */
+  height: 100vh;
+  background-color: #b5cfd7;
 }
 
 button {
   width: 200px;
   height: 50px;
-  margin: 10px 0; /* Espacio entre botones */
+  margin: 10px 0;
   font-size: 16px;
   background-color: white;
   border: none;
@@ -19,14 +19,13 @@ button {
 }
 
 button:hover {
-  background-color: #a6acaf; /* Efecto hover en el botón */
+  background-color: #a6acaf;
 }
 
 .button-logOut {
   justify-content: center;
 }
 
-/* Estilo para organizar el header */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -35,13 +34,11 @@ button:hover {
   background-color: #f4f4f4;
 }
 
-/* Alinear los botones a la izquierda con espacio entre ellos */
 .top-buttons {
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
 }
 
-/* Estilos para los botones */
 .top-buttons button {
   padding: 10px 20px;
   background-color: #4caf50;
@@ -55,7 +52,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Alinear el mensaje de usuario a la derecha */
 .usuario-logeado {
   text-align: right;
   font-size: 16px;
@@ -63,17 +59,14 @@ button:hover {
 }
 
 .horizontal-buttons-container {
-  position: fixed; /* Fija la posición en la pantalla */
-  bottom: 20px; /* Los coloca a 20px desde el fondo */
-  left: 50%; /* Centra horizontalmente */
-  transform: translateX(
-    -50%
-  ); /* Ajusta la posición para que el contenedor esté centrado */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
 }
 
-/* Estilos de los botones */
 .horizontal-buttons-container button {
   padding: 10px 20px;
   background-color: #4caf50;
@@ -88,8 +81,82 @@ button:hover {
 }
 
 .custom-h1 {
-  font-size: 30px; /* Cambia el tamaño del texto aquí */
-  font-weight: bold; /* Puedes ajustar el grosor del texto si lo necesitas */
-  color: #333; /* Cambia el color si es necesario */
-  text-align: center; /* Alinea el texto al centro */
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* -------------------------------------carta------------------------------- */
+.contenedor-cartas {
+  display: flex; /* Para alinear las cartas */
+  justify-content: center; /* Centra las cartas horizontalmente */
+  align-items: flex-start; /* Centra las cartas verticalmente */
+  height: 24vh; /* Abarca toda la altura de la pantalla */
+}
+
+.carta {
+  position: relative; /* Esto es necesario para que el posicionamiento absoluto funcione */
+  width: 250px;
+  height: 300px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: -140px;
+}
+
+.contenedor-boton-mayormenor {
+  position: relative;
+}
+
+.boton-mayor {
+  position: absolute;
+  top: 50px; /* Ajusta la distancia desde arriba */
+  left: 10px; /* Ajusta la distancia desde la derecha */
+}
+.boton-menor {
+  position: absolute;
+  top: 50px; /* Ajusta la distancia desde arriba */
+  right: 10px; /* Ajusta la distancia desde la derecha */
+}
+
+.num-esquina {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.esquina-arriba {
+  top: 5px; /* Ajusta para posicionar en la parte superior */
+  left: 5px; /* Ajusta para posicionar a la izquierda */
+}
+
+.esquina-abajo {
+  bottom: 5px; /* Ajusta para posicionar en la parte inferior */
+  right: 5px; /* Ajusta para posicionar a la derecha */
+}
+
+.num-centro {
+  font-size: 24px;
+  text-align: center;
+}
+
+.puntaje-cartas {
+  position: absolute; /* Posiciona el puntaje de manera absoluta */
+  top: 100px; /* Ajusta la posición vertical según sea necesario */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar completamente */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Fondo semi-transparente para mejor visibilidad */
+  padding: 5px 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-weight: bold; /* Texto en negrita */
 }
