@@ -14,7 +14,68 @@ import { CommonModule } from '@angular/common';
 export class PreguntadosComponent {
   user: any;
 
+  indicePreguntaActual = 0;
+  puntaje = 0;
+  preguntas = [
+    {
+      pregunta: '¿Cuantas personas fueron abusadas por Diddy?',
+      opciones: ['10', '30', '27', 'Incontables'],
+      correcta: 'Incontables',
+    },
+    {
+      pregunta: '¿Cuál es el río más largo del mundo?',
+      opciones: ['Nilo', 'Amazonas', 'Yangtsé', 'Misisipi'],
+      respuestaCorrecta: 'Amazonas',
+    },
+    {
+      pregunta: '¿Quién pintó la Mona Lisa?',
+      opciones: ['Van Gogh', 'Da Vinci', 'Picasso', 'Rembrandt'],
+      respuestaCorrecta: 'Da Vinci',
+    },
+  ];
+  totalPreguntas = this.preguntas.length;
+  preguntaActual: any;
+  mensaje: string = '';
+
   constructor(private userService: UserService, private router: Router) {}
+
+  ngOnInit() {
+    this.user = this.userService.getUsuarioActual();
+    this.preguntaActual = this.preguntas[this.indicePreguntaActual];
+  }
+
+  // mostrarPregunta() {
+  //   const pregunta = this.preguntas[this.indicePreguntaActual];
+  //   console.log(pregunta.pregunta);
+  //   pregunta.opciones.forEach((opcion, index) => {
+  //     console.log(`${index + 1}: ${opcion}`);
+  //   });
+  // }
+
+  verificarRespuesta(opcionElegida: string) {
+    if (opcionElegida === this.preguntaActual.correcta) {
+      this.puntaje += 50;
+      this.mensaje = 'CORRECTO';
+    } else {
+      this.mensaje =
+        'INCORRECTO. La respuesta correcta es: ' + this.preguntaActual.correcta;
+    }
+
+    this.siguientePregunta();
+  }
+
+  siguientePregunta() {
+    this.indicePreguntaActual++;
+    if (this.indicePreguntaActual < this.totalPreguntas) {
+      //this.mostrarPregunta();
+      this.preguntaActual = this.preguntas[this.indicePreguntaActual];
+      this.mensaje = '';
+    } else {
+      console.log(
+        `Juego terminado. Puntaje Finla: ${this.puntaje}/${this.totalPreguntas}`
+      );
+    }
+  }
 
   isLoggedIn() {
     return this.userService.getAuthStatus();
@@ -41,10 +102,6 @@ export class PreguntadosComponent {
         });
       })
       .catch((error) => console.log(error));
-  }
-
-  ngOnInit() {
-    this.user = this.userService.getUsuarioActual();
   }
 
   moveToChat() {

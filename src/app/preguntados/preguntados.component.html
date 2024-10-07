@@ -20,6 +20,22 @@
   </div>
   <br />
 
+  <div class="botones-opciones" *ngIf="isLoggedIn()">
+    <img src="assets-ahorcado/elahorcado0.png" alt="" />
+
+    <div *ngIf="preguntaActual" class="pregunta-contenedor">
+      <h2>{{ preguntaActual.pregunta }}</h2>
+
+      <div class="opciones-contenedor">
+        <div *ngFor="let opcion of preguntaActual.opciones" class="opcion">
+          <button (click)="verificarRespuesta(opcion)">{{ opcion }}</button>
+        </div>
+      </div>
+
+      <p class="mensaje">{{ mensaje }}</p>
+    </div>
+  </div>
+
   <div id="logOut" *ngIf="isLoggedIn()" class="horizontal-buttons-container">
     <button routerLink="/quiensoy">Quien soy</button>
     <br />

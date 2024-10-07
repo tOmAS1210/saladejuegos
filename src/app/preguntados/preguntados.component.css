@@ -93,3 +93,28 @@ button:hover {
   color: #333; /* Cambia el color si es necesario */
   text-align: center; /* Alinea el texto al centro */
 }
+.pregunta-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.opciones-contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.opcion button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.mensaje {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #333;
+}

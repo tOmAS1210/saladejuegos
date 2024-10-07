@@ -15,8 +15,8 @@
 }
 
 .cardContainer {
-  width: 300px;
-  height: 500px; /* Tamaño fijo */
+  width: 50vw;
+  height: 100vh; /* Tamaño fijo */
   position: relative;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -44,26 +44,45 @@
   transform: scale(0.9);
 }
 
+.mensaje {
+  margin-bottom: 10px;
+  clear: both;
+}
+
+.enviado,
+.recibido {
+  display: inline-block;
+  max-width: 70%; /* Ajusta el ancho máximo deseado */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  word-wrap: break-word; /* Ajusta las palabras largas */
+  overflow-wrap: break-word; /* Ajuste adicional para cortar palabras largas */
+}
+
 .enviado {
-  display: block;
   float: right;
   background-color: rgb(0, 153, 255);
-  color: white;
-  min-width: 50.01%;
-  border-radius: 10px;
-  text-align: left;
-  margin-bottom: 5px;
+  color: rgb(0, 0, 0);
 }
 
 .recibido {
-  display: block;
   float: left;
-  background-color: gray;
-  color: black;
-  min-width: 50.01%;
-  border-radius: 10px;
-  text-align: left;
+  background-color: rgb(238, 196, 196);
+  color: #000000;
+}
+
+.emisor {
+  font-size: 0.8rem;
+  font-weight: bold;
   margin-bottom: 5px;
+  color: #000000; /* Color del texto del emisor */
+}
+
+.contenido-mensaje {
+  padding: 10px;
+  background-color: #f2f2f2; /* Color del fondo del mensaje */
+  border-radius: 5px;
 }
 
 .contenedorDeMensajes {

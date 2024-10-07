@@ -15,12 +15,12 @@ export class RegisterComponent {
   correo: string = '';
   pass: string = '';
   nombre: string = '';
+
   constructor(private userService: UserService, private router: Router) {}
 
   bandera = 0;
 
   crearUsuario() {
-    console.log('entra en este metodo');
     this.userService
       .register(this.correo, this.pass, this.nombre)
       .then((response) => {
@@ -30,38 +30,64 @@ export class RegisterComponent {
           title: 'Good job!',
           text: 'Registro y login exitoso',
           icon: 'success',
-          position: 'top', // Cambia la posición (top, center, bottom, etc.)
-          toast: true, // Lo hace aparecer como una notificación
+          position: 'top',
+          toast: true,
           showConfirmButton: false,
-          timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-          background: '#f8d7da', // Color de fondo para hacerlo más visible
+          timer: 3000,
+          background: '#f8d7da',
           customClass: {
-            popup: 'my-custom-popup', // Clase CSS personalizada
+            popup: 'my-custom-popup',
           },
         });
         this.router.navigate(['/home']);
       })
       .catch((error) => {
         this.bandera = 1;
-        this.alertCampos();
+        this.alertCampos(error);
         console.log(error);
       });
   }
 
-  alertCampos() {
-    if (this.bandera === 1) {
+  alertCampos(error: any) {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (this.pass.length < 6) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Verifique la validez de su correo o contrasenia',
-        position: 'top', // Cambia la posición (top, center, bottom, etc.)
-        toast: true, // Lo hace aparecer como una notificación
+        text: 'Verifique la validez de su contrasenia',
+        position: 'top',
+        toast: true,
         showConfirmButton: true,
-        ///timer: 3000, // Lo hace desaparecer automáticamente después de 3 segundos
-        background: '#f8d7da', // Color de fondo para hacerlo más visible
+        background: '#f8d7da',
         customClass: {
           popup: 'my-custom-popup',
-        }, // Clase CSS personalizada
+        },
+      });
+    } else if (!emailPattern.test(this.correo)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Verifique la validez de su correo',
+        position: 'top',
+        toast: true,
+        showConfirmButton: true,
+        background: '#f8d7da',
+        customClass: {
+          popup: 'my-custom-popup',
+        },
+      });
+    } else if (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Parece que este correo ya esta registrado en la pagina',
+        position: 'top',
+        toast: true,
+        showConfirmButton: true,
+        background: '#f8d7da',
+        customClass: {
+          popup: 'my-custom-popup',
+        },
       });
     }
   }

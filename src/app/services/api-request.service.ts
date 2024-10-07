@@ -6,13 +6,9 @@ import { inject, Injectable } from '@angular/core';
 })
 export class ApiRequestService {
   http = inject(HttpClient);
-
   apiUrl = 'https://api.github.com/users/';
-
   datos: any = {};
-
   constructor() {}
-
   traerUsuario(usuario: string) {
     const peticion = this.http.get(this.apiUrl + usuario, {
       responseType: 'json',
@@ -20,9 +16,6 @@ export class ApiRequestService {
         ejemplo: 'labo4',
       },
     });
-
-    //return peticion;
-
     peticion.subscribe((respuesta) => {
       console.log(respuesta);
       this.datos = respuesta;

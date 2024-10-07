@@ -15,7 +15,56 @@
 <div class="button-container">
   <div class="juegoAhorcado" *ngIf="isLoggedIn()">
     <h2>Puntos: {{ puntos }}</h2>
-    <img src="/elahorcado.png" alt="ahorcado1" width="200" height="200" />
+    @if (intentosRestantes == 6) {
+    <img
+      src="assets-ahorcado/elahorcado0.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 5) {
+    <img
+      src="assets-ahorcado/elahorcado1.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 4) {
+    <img
+      src="assets-ahorcado/elahorcado2.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 3) {
+    <img
+      src="assets-ahorcado/elahorcado3.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 2) {
+    <img
+      src="assets-ahorcado/elahorcado4.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 1) {
+    <img
+      src="assets-ahorcado/elahorcado5.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }@else if (intentosRestantes == 0) {
+    <img
+      src="assets-ahorcado/elahorcado6.png"
+      alt="ahorcado1"
+      width="200"
+      height="200"
+    />
+    }
     <div class="lineas">
       {{ lineas }}
     </div>

@@ -1,16 +1,32 @@
 <div class="contenedor">
   <div class="card text-center cardContainer">
-    <div class="card-header">CHAT</div>
+    <!-- <div class="card-header">CHAT</div> -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>CHAT</span>
+      <button
+        class="btn btn-danger btn-sm"
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+      >
+        X
+      </button>
+    </div>
 
     <div class="card-body">
       <div id="contenedorDeMensajes" class="contenedorDeMensajes h-100">
-        <p
+        <div
           *ngFor="let mensaje of mensajes"
-          class="msj p-2"
-          [ngClass]="usuarioLogueado == mensaje.emisor ? 'enviado' : 'recibido'"
+          class="mensaje p-2"
+          [ngClass]="
+            usuarioLogueado.uid == mensaje.emisor ? 'enviado' : 'recibido'
+          "
         >
-          {{ mensaje.msj }}
-        </p>
+          <div class="emisor">Emisor: {{ mensaje.email }}</div>
+
+          <div class="contenido-mensaje">
+            {{ mensaje.msj }}
+          </div>
+        </div>
       </div>
     </div>
 

@@ -8,6 +8,7 @@ import {
 import { single } from 'rxjs';
 import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { fetchSignInMethodsForEmail } from 'firebase/auth/cordova';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,18 @@ export class UserService {
 
   constructor(private auth: Auth, private firestore: Firestore) {}
 
+  async verificarEmailExiste(email: string) {
+    const signInMethods = await fetchSignInMethodsForEmail(this.auth, email);
+    return signInMethods.length > 0;
+  }
+
   async register(email: string, password: string, name: string) {
+    // const emailExiste = await this.verificarEmailExiste(email);
+
+    // if (emailExiste) {
+    //   throw new Error('El correo ya esta registrado');
+    // }
+
     const userCredencial = await createUserWithEmailAndPassword(
       this.auth,
       email,
@@ -48,8 +60,6 @@ export class UserService {
 
   getUsuarioActual() {
     return this.auth.currentUser;
-    //return this.auth.authStateReady;
-    //return this.afAuth.authState;
   }
 }
 
