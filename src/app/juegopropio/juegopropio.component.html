@@ -21,27 +21,24 @@
   <br />
 
   <div class="container" *ngIf="isLoggedIn()">
-    <p></p>
-    <p></p>
     <h1>Juego SNAKE</h1>
-    <p></p>
     <p></p>
 
     <div class="container2" style="background-color: #282846">
-      <div class="container2">
-        <div class="score-card">
-          <div class="score-board">
+      <div class="score-card">
+        <div class="score-board">
+          <div class="container2">
             <h1>Score</h1>
             <h3>{{ comida.puntajeActual }}</h3>
           </div>
-          <div class="restart-button">RESTART</div>
+          <div class="restart-button" (click)="ngAfterViewInit()">RESTART</div>
         </div>
-        <div class="game-over" *ngIf="gameOver">
-          <h1>Game Over</h1>
-        </div>
-
-        <div class="tableroJuego"></div>
       </div>
+      <div class="game-over" *ngIf="gameOver">
+        <h1>Game Over</h1>
+      </div>
+
+      <div class="tableroJuego"></div>
     </div>
   </div>
 

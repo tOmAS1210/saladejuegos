@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -38,6 +38,19 @@ export class JuegopropioComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.user = this.userService.getUsuarioActual();
     this.serpiente.listenToInputs();
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowDown' ||
+      event.key === 'ArrowLeft' ||
+      event.key === 'ArrowRight'
+    ) {
+      event.preventDefault();
+      this.movimientoDPad(event.key);
+    }
   }
 
   movimientoDPad(direccion: string) {
@@ -86,17 +99,17 @@ export class JuegopropioComponent implements OnInit, AfterViewInit {
   get snakeSpeed() {
     const puntaje = this.comida.puntajeActual;
     if (puntaje < 10) {
-      return 4;
+      return 6;
     }
     if (puntaje > 10 && puntaje < 15) {
-      return 5;
+      return 7;
     }
 
     if (puntaje > 15 && puntaje < 20) {
-      return 6;
+      return 8;
     }
 
-    return 7;
+    return 9;
   }
 
   isLoggedIn() {
