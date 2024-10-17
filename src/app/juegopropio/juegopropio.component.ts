@@ -31,8 +31,19 @@ export class JuegopropioComponent implements OnInit, AfterViewInit {
     if (!this.tableroJuego) {
       console.log('No se encontro el elemento tableroJuego');
       return;
+    } else {
+      console.log('Ahora si se encontro el tablero?');
     }
     window.requestAnimationFrame(this.start.bind(this));
+  }
+
+  reiniciarJuego() {
+    this.router
+      .navigateByUrl('/home', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/juegopropio']);
+      });
+    console.log('Funca?');
   }
 
   ngOnInit(): void {

@@ -118,3 +118,14 @@ button:hover {
   font-weight: bold;
   color: #333;
 }
+
+.tema-button {
+  margin-right: 10px;
+}
+
+.imagen {
+  display: block;
+  margin: 0 auto;
+  max-width: 250px;
+  height: auto;
+}

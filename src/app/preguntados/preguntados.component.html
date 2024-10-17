@@ -13,34 +13,67 @@
 </header>
 
 <div class="button-container">
-  <div *ngIf="!isLoggedIn()">
+  <!-- <div *ngIf="!isLoggedIn()">
     <button routerLink="/login">Login</button>
     &nbsp;<br /><br />
     <button routerLink="/registro">Register</button>
   </div>
-  <br />
+  <br /> -->
 
-  <div class="botones-opciones" *ngIf="isLoggedIn()">
-    <img src="assets-ahorcado/elahorcado0.png" alt="" />
+  <div *ngIf="banderaTema == 0 && isLoggedIn()">
+    <h1>Por favor, elija el tema de las preguntas</h1>
 
-    <div *ngIf="preguntaActual" class="pregunta-contenedor">
-      <h2>{{ preguntaActual.pregunta }}</h2>
-
-      <div class="opciones-contenedor">
-        <div *ngFor="let opcion of preguntaActual.opciones" class="opcion">
-          <button (click)="verificarRespuesta(opcion)">{{ opcion }}</button>
-        </div>
-      </div>
-
-      <p class="mensaje">{{ mensaje }}</p>
-    </div>
+    <button
+      class="tema-button"
+      (click)="TraerPreguntasTema('Conocimiento General')"
+    >
+      Conocimiento General
+    </button>
+    <button class="tema-button" (click)="TraerPreguntasTema('Entretenimiento')">
+      Entretenimiento
+    </button>
+    <button class="tema-button" (click)="TraerPreguntasTema('Juegos')">
+      Juegos
+    </button>
   </div>
 
-  <div id="logOut" *ngIf="isLoggedIn()" class="horizontal-buttons-container">
-    <button routerLink="/quiensoy">Quien soy</button>
-    <br />
-    <button class="button-logOut" (click)="onClick()">Cerrar sesion</button>
-    <br />
-    <button (click)="moveToChat()">Chat</button>
+  <div *ngIf="banderaTema == 1">
+    <div class="botones-opciones" *ngIf="isLoggedIn()">
+      <img
+        *ngIf="preguntaActual && preguntaActual.foto"
+        class="imagen"
+        [src]="'http://localhost:3000/' + preguntaActual.foto"
+        alt="imagen_pregunta"
+      />
+
+      <div *ngIf="preguntaActual" class="pregunta-contenedor">
+        <h2>{{ preguntaActual.pregunta }}</h2>
+
+        <div class="opciones-contenedor">
+          <div
+            *ngFor="let respuesta of preguntaActual.respuestas"
+            class="opcion"
+          >
+            <button (click)="verificarRespuesta(respuesta)">
+              {{ respuesta }}
+            </button>
+          </div>
+        </div>
+
+        <p class="mensaje">{{ mensaje }}</p>
+      </div>
+
+      <div
+        id="logOut"
+        *ngIf="isLoggedIn()"
+        class="horizontal-buttons-container"
+      >
+        <button routerLink="/quiensoy">Quien soy</button>
+        <br />
+        <button class="button-logOut" (click)="onClick()">Cerrar sesion</button>
+        <br />
+        <button (click)="moveToChat()">Chat</button>
+      </div>
+    </div>
   </div>
 </div>

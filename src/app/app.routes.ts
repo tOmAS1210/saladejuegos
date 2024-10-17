@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const routes: Routes = [
       import('./quien-soy/quien-soy.component').then(
         (c) => c.QuienSoyComponent
       ),
+    canActivate: [AuthGuard],
   },
 
   {
@@ -33,12 +35,14 @@ export const routes: Routes = [
     path: 'chat',
     loadComponent: () =>
       import('./chat/chat.component').then((c) => c.ChatComponent),
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'ahorcado',
     loadComponent: () =>
       import('./ahorcado/ahorcado.component').then((c) => c.AhorcadoComponent),
+    canActivate: [AuthGuard],
   },
 
   {
@@ -47,6 +51,7 @@ export const routes: Routes = [
       import('./mayormenor/mayormenor.component').then(
         (c) => c.MayormenorComponent
       ),
+    canActivate: [AuthGuard],
   },
 
   {
@@ -55,6 +60,7 @@ export const routes: Routes = [
       import('./preguntados/preguntados.component').then(
         (c) => c.PreguntadosComponent
       ),
+    canActivate: [AuthGuard],
   },
 
   {
@@ -63,5 +69,6 @@ export const routes: Routes = [
       import('./juegopropio/juegopropio.component').then(
         (c) => c.JuegopropioComponent
       ),
+    canActivate: [AuthGuard],
   },
 ];

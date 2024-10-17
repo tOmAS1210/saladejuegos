@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -51,7 +52,16 @@ export class ChatComponent implements OnInit {
       const qery = query(mensajesRef, orderBy('timestamp', 'asc'));
       const querySnapshot = await getDocs(qery);
 
-      this.mensajes = querySnapshot.docs.map((doc) => doc.data());
+      //this.mensajes = querySnapshot.docs.map((doc) => doc.data());
+
+      this.mensajes = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          ...data,
+          timestamp: data['timestamp']?.toDate().toLocaleTimeString() || '',
+        };
+      });
+
       console.log('Mensajes recuperados: ', this.mensajes);
     } catch (error) {
       console.log('Error al obtener los mensajes: ', error);
@@ -59,17 +69,18 @@ export class ChatComponent implements OnInit {
   }
 
   async enviarMensaje() {
-    // console.log(this.nuevoMensaje);
     let mensaje = {
       emisor: this.usuarioLogueado.uid,
       msj: this.nuevoMensaje,
       email: this.usuarioLogueado.email,
-      timestamp: new Date(),
+      timestamp: new Date() as any,
     };
 
     try {
       const mensajesRef = collection(this.firestore, 'mensajes');
       await addDoc(mensajesRef, mensaje);
+
+      mensaje.timestamp = mensaje.timestamp.toLocaleTimeString();
 
       this.mensajes.push(mensaje);
 

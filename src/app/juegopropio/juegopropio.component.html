@@ -13,16 +13,17 @@
 </header>
 
 <div class="button-container">
-  <div *ngIf="!isLoggedIn()">
+  <!-- <div *ngIf="!isLoggedIn()">
     <button routerLink="/login">Login</button>
     &nbsp;<br /><br />
     <button routerLink="/registro">Register</button>
   </div>
-  <br />
+  <br /> -->
 
   <div class="container" *ngIf="isLoggedIn()">
-    <h1>Juego SNAKE</h1>
-    <p></p>
+    <button class="restart-button" (click)="reiniciarJuego()">RESTART</button>
+    <!-- <h1 class="nombre-juego">Juego SNAKE</h1>
+    <p></p> -->
 
     <div class="container2" style="background-color: #282846">
       <div class="score-card">
@@ -31,7 +32,6 @@
             <h1>Score</h1>
             <h3>{{ comida.puntajeActual }}</h3>
           </div>
-          <div class="restart-button" (click)="ngAfterViewInit()">RESTART</div>
         </div>
       </div>
       <div class="game-over" *ngIf="gameOver">

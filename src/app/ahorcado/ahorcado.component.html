@@ -4,7 +4,7 @@
       <button routerLink="/ahorcado">Ahorcado</button>
       <button routerLink="/mayormenor">Mayor o Menor</button>
       <button routerLink="/preguntados">Preguntados</button>
-      <button routerLink="/juegopropios">Juego propio</button>
+      <button routerLink="/juegopropio">Juego propio</button>
     </div>
     <div class="usuario-logeado" *ngIf="user">
       <p>Bienvenido, {{ user.name ? user.name : user.email }}!</p>
@@ -268,12 +268,12 @@
     </div>
   </div>
 
-  <div *ngIf="!isLoggedIn()">
+  <!-- <div *ngIf="!isLoggedIn()">
     <button routerLink="/login">Login</button>
     &nbsp;<br /><br />
     <button routerLink="/registro">Register</button>
   </div>
-  <br />
+  <br /> -->
 
   <div id="logOut" *ngIf="isLoggedIn()" class="horizontal-buttons-container">
     <button routerLink="/quiensoy">Quien soy</button>

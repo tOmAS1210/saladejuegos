@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { PreguntadosApiService } from '../services/preguntados-api.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -14,66 +15,129 @@ import { CommonModule } from '@angular/common';
 export class PreguntadosComponent {
   user: any;
 
+  preguntas: any[] = [];
   indicePreguntaActual = 0;
-  puntaje = 0;
-  preguntas = [
-    {
-      pregunta: '¿Cuantas personas fueron abusadas por Diddy?',
-      opciones: ['10', '30', '27', 'Incontables'],
-      correcta: 'Incontables',
-    },
-    {
-      pregunta: '¿Cuál es el río más largo del mundo?',
-      opciones: ['Nilo', 'Amazonas', 'Yangtsé', 'Misisipi'],
-      respuestaCorrecta: 'Amazonas',
-    },
-    {
-      pregunta: '¿Quién pintó la Mona Lisa?',
-      opciones: ['Van Gogh', 'Da Vinci', 'Picasso', 'Rembrandt'],
-      respuestaCorrecta: 'Da Vinci',
-    },
-  ];
-  totalPreguntas = this.preguntas.length;
   preguntaActual: any;
+  puntaje = 0;
+  cantidadRespondida = 0;
   mensaje: string = '';
+  temaSeleccionado = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  banderaTema = 0;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private preguntadosService: PreguntadosApiService
+  ) {}
 
   ngOnInit() {
     this.user = this.userService.getUsuarioActual();
-    this.preguntaActual = this.preguntas[this.indicePreguntaActual];
   }
 
-  // mostrarPregunta() {
-  //   const pregunta = this.preguntas[this.indicePreguntaActual];
-  //   console.log(pregunta.pregunta);
-  //   pregunta.opciones.forEach((opcion, index) => {
-  //     console.log(`${index + 1}: ${opcion}`);
-  //   });
-  // }
+  TraerPreguntasTema(tema: string) {
+    this.temaSeleccionado = tema;
+    this.banderaTema = 1;
+
+    if (this.temaSeleccionado == 'Conocimiento General') {
+      this.preguntadosService.getPreguntasGeneral().subscribe((data) => {
+        if (data) {
+          this.preguntas = data;
+          this.preguntaActual = this.preguntas[this.indicePreguntaActual];
+        } else {
+          console.log('ERROR');
+        }
+      });
+    } else if (this.temaSeleccionado == 'Entretenimiento') {
+      this.preguntadosService
+        .getPreguntasEntretenimiento()
+        .subscribe((data) => {
+          if (data) {
+            this.preguntas = data;
+            this.preguntaActual = this.preguntas[this.indicePreguntaActual];
+          } else {
+            console.log('ERROR');
+          }
+        });
+    } else if (this.temaSeleccionado == 'Juegos') {
+      this.preguntadosService.getPreguntasJuegos().subscribe((data) => {
+        if (data) {
+          this.preguntas = data;
+          this.preguntaActual = this.preguntas[this.indicePreguntaActual];
+        } else {
+          console.log('ERROR');
+        }
+      });
+    }
+  }
 
   verificarRespuesta(opcionElegida: string) {
-    if (opcionElegida === this.preguntaActual.correcta) {
+    if (opcionElegida === this.preguntaActual.respuesta_correcta) {
+      this.cantidadRespondida += 1;
       this.puntaje += 50;
-      this.mensaje = 'CORRECTO';
+      //this.mensaje = 'CORRECTO';
+      Swal.fire({
+        text: 'Respuesta Correcta',
+        timer: 2000,
+        showConfirmButton: false,
+        background: '#008000',
+        color: '#FFFFFF',
+      });
+
+      if (this.cantidadRespondida === 10) {
+        Swal.fire({
+          title: 'FELICIDADES!!!',
+          text: 'LOGRASTE RESPONDER TODAS LAS PREGUNTAS. +1000 PUNTOS',
+          icon: 'success',
+          position: 'top',
+          toast: true,
+          showConfirmButton: false,
+          timer: 3000,
+          background: '#f8d7da',
+          customClass: {
+            popup: 'my-custom-popup',
+          },
+        });
+        this.puntaje += 1000;
+      }
     } else {
-      this.mensaje =
-        'INCORRECTO. La respuesta correcta es: ' + this.preguntaActual.correcta;
+      Swal.fire({
+        text: `Respuesta Incorrecta, la respuesta era: ${this.preguntaActual.respuesta_correcta}`,
+        timer: 2000,
+        showConfirmButton: false,
+        background: '#ee4825',
+        color: '#FFFFFF',
+      });
+      // this.mensaje =
+      //   'INCORRECTO. La respuesta correcta es: ' +
+      //   this.preguntaActual.respuesta_correcta;
     }
 
-    this.siguientePregunta();
+    setTimeout(() => {
+      this.siguientePregunta();
+    }, 1000);
   }
 
   siguientePregunta() {
     this.indicePreguntaActual++;
-    if (this.indicePreguntaActual < this.totalPreguntas) {
-      //this.mostrarPregunta();
+    if (this.indicePreguntaActual <= 9) {
       this.preguntaActual = this.preguntas[this.indicePreguntaActual];
       this.mensaje = '';
     } else {
-      console.log(
-        `Juego terminado. Puntaje Finla: ${this.puntaje}/${this.totalPreguntas}`
-      );
+      if (this.cantidadRespondida < 10) {
+        Swal.fire({
+          text: `Juego terminado, lograste ${this.puntaje} Puntos respondiendo ${this.cantidadRespondida} preguntas correctas`,
+          icon: 'success',
+          position: 'top',
+          toast: true,
+          showConfirmButton: false,
+          timer: 3000,
+          background: '#f8d7da',
+          customClass: {
+            popup: 'my-custom-popup',
+          },
+        });
+      }
     }
   }
 
