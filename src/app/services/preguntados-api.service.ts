@@ -14,10 +14,12 @@ interface Pregunta {
   providedIn: 'root',
 })
 export class PreguntadosApiService {
-  private apiUrlGeneral = 'http://localhost:3000/api/preguntasGeneral';
+  private apiUrlGeneral =
+    'https://api-preguntas-cuvbhex9m-thomas-aguilars-projects.vercel.app/api/preguntasGeneral';
   private apiUrlEntretenimiento =
-    'http://localhost:3000/api/preguntasEntretenimiento';
-  private apiUrlJuegos = 'http://localhost:3000/api/preguntasJuegos';
+    'https://api-preguntas-cuvbhex9m-thomas-aguilars-projects.vercel.app/api/preguntasEntretenimiento';
+  private apiUrlJuegos =
+    'https://api-preguntas-cuvbhex9m-thomas-aguilars-projects.vercel.app/api/preguntasJuegos';
 
   constructor(private http: HttpClient) {}
 
